@@ -51,7 +51,7 @@ NOTES:
 
 ## Traefik Dashboard
 
-Update your configuration `/etc/hosts``
+Update your configuration `/etc/hosts`
 And try to access http://dashboard.domain/dashboard/
 
 **Todo**
