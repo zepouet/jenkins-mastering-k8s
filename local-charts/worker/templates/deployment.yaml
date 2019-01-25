@@ -17,20 +17,18 @@ spec:
         chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
         release: {{ .Release.Name  | quote }}
         heritage: {{ .Release.Service  | quote }}
-        version: {{ .Values.imageTag | quote }}
+        version: {{ .Values.image.tag | quote }}
     spec:
-      imagePullSecrets:
-        - name: {{ .Values.image.pullSecret }}
       containers:
         - name: {{ template "fullname" . }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{default "Always" .Values.pullPolicy}}
           env:
           - name: POSTGRES_SERVER
-            value: {{ .Values.postgresql.server | default (printf "%s-postgresql" ( .Release.Name )) | quote }}
+            value: {{ .Values.postgresql.server | default "db" | quote }}
           - name: POSTGRES_USERNAME
             value: {{ .Values.postgresql.username | default "postgres" | quote }}
           - name: POSTGRES_PASSWORD
             value: {{ .Values.postgresql.password | default "postgres" | quote }}
           - name: REDIS_HOST
-            value: {{ .Values.redis.host | default (printf "%s-redis" ( .Release.Name )) | quote }}
+            value: {{ .Values.redis.host | default "redis" | quote }}

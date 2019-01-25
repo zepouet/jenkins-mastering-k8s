@@ -1,7 +1,7 @@
 dependencies:
 - name: postgresql
   version: 0.9.5
-  repository: https://kubernetes-charts.storage.googleapis.com/ 
+  repository: https://kubernetes-charts.storage.googleapis.com/
   condition: postgresql.enabled
   tags:
   - db
@@ -12,17 +12,20 @@ dependencies:
   tags:
   - queue
 - name: result
-  version: 0.1.1
+  version: 0.0.1
   repository: file://local-charts/result
   tags:
   - node
 - name: vote
-  version: 0.1.1
+  version: 0.0.1
   repository: file://local-charts/vote
   tags:
   - python
 - name: worker
-  version: 0.1.1
+  version: 0.0.1
   repository: file://local-charts/worker
   tags:
   - dotnet
+- name: ingress
+  version: 0.0.1
+  repository: file://local-charts/ingress

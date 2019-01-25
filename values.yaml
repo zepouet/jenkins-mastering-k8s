@@ -9,9 +9,15 @@ postgresql:
   # Uncomment line below and set to postgres host fqdn is using postgres outside release
   # postgresServer: postgres_host_fqdn
   postgresUser: postgres
-  postgresPassword: postgres
+  postgresPassword: "postgres"
+  # Overide the full name of the service because official images have hardcoding values
+  fullnameOverride: db
 
 # Enabling redis service, by default
 redis:
   enabled: true
   usePassword: false
+  fullnameOverride: redis
+
+global:
+  foo: bar
