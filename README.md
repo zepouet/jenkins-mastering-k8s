@@ -12,6 +12,9 @@ https://github.com/eldada/jenkins-in-kubernetes
 
 We will deploy it as Ingress not as DaemonSet. 
 
+`rbac.enabled=true` to the parameters when running the helm install command creates the necessary account that Traefik needs to run in the kube-system namespace.
+
+
 ```
 export KUBECONFIG=/Users/nicolas/software/k8s-1-13-1-do-kubeconfig.yaml
 kubectl get nodes
@@ -22,7 +25,7 @@ kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 
-helm install stable/traefik --set dashboard.enabled=true,dashboard.domain=dashboard.domain --name demo
+helm install stable/traefik --set dashboard.enabled=true,dashboard.domain=dashboard.domain,rbac.enabled=true --name demo
 
 ```
 
