@@ -49,5 +49,10 @@ NOTES:
 2. Configure DNS records corresponding to Kubernetes ingress resources to point to the load balancer IP/hostname found in step 1
 ```
 
+## Traefik Dashboard
+
+Update your configuration `/etc/hosts``
+And try to access http://dashboard.domain/dashboard/
+
 **Todo**
 * Tiller TLS configuration
